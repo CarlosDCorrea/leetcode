@@ -7,23 +7,15 @@ word2 = 'pqrsss'
 
 def merge_alternately(word1: str, word2: str) -> List[str]:
     output: List[str] = []
-    offset: int = 0
-    exced: List[str] = []
 
-    if len(word1) > len(word2):
-        offset = len(word2)
-        exced = [l for l in word1[offset:]]
-    elif len(word1) < len(word2):
-        offset = len(word1)
-        exced = [l for l in word2[offset:]]
+    for i in range(max(len(word1), len(word2))):
+        if i < len(word1):
+            output.append(word1[i])
 
-    for l1, l2 in zip(word1, word2):
-        output.extend([l1, l2])
-
-    if exced:
-        output.extend(exced)
+        if i < len(word2):
+            output.append(word2[i])
 
     return "".join(output)
 
 
-merge_alternately(word1, word2)
+print(merge_alternately(word1, word2))
